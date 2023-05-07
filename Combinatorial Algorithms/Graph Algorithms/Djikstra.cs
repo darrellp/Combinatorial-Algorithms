@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Combinatorial_Algorithms.Graph_Structures;
 using Combinatorial_Algorithms.PriorityQueue;
-using TV = Combinatorial_Algorithms.Graph_Structures.IVertex;
+using TV = Combinatorial_Algorithms.Graph_Structures.ITaggedVertex<object>;
 using TE = Combinatorial_Algorithms.Graph_Structures.ITaggedEdge<double>;
 
 namespace Combinatorial_Algorithms.Graph_Algorithms
@@ -23,7 +23,7 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static List<TV>? FindShortestPath(
-            IGraph<Vertex<object, double>,  Edge<object, double>> graph, 
+            IGraph<TV,  TE> graph, 
             TV vtxStart, 
             TV vtxEnd)
         {

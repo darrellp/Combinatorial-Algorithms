@@ -48,8 +48,9 @@ namespace CATests
             gr.AddDoubleEdge(j, l, 4);
             gr.AddDoubleEdge(l, c, 2);
             gr.AddDoubleEdge(c, s, 3);
-            var grType = gr as IGraph<Vertex<object, double>, Edge<object, double>>;
-            var path = Djikstra.FindShortestPath(grType, s, e);
+            var grType = gr as IGraph<ITaggedVertex<object>, ITaggedEdge<double>>;
+            Assert.IsNotNull(grType);
+            var path = Djikstra.FindShortestPath(gr, s, e);
             Assert.IsNotNull(path);
             Assert.AreEqual(((Vertex<object, double>)path[0]).Label, "S");
             Assert.AreEqual(((Vertex<object, double>)path[1]).Label, "B");

@@ -3,7 +3,7 @@
 namespace Combinatorial_Algorithms.Graph_Structures
 {
 
-    public class Graph<TV, TE> : IGraph<Vertex<TV, TE>, Edge<TV, TE>>
+    public class Graph<TV, TE> : IGraph<ITaggedVertex<TV>, ITaggedEdge<TE>>
     {
         #region Private variables
         // Keys are vertex IDs, values are the vertices themselves
@@ -15,7 +15,7 @@ namespace Combinatorial_Algorithms.Graph_Structures
         #region Properties
         public int VertexCount => _mapIdToVtx.Count;
 
-        public IEnumerable<Vertex<TV, TE>> Vertices => _mapIdToVtx.Values;
+        public IEnumerable<ITaggedVertex<TV>> Vertices => _mapIdToVtx.Values;
         #endregion
 
         #region Accessors
