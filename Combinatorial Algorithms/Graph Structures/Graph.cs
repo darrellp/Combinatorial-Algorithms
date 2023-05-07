@@ -2,12 +2,23 @@
 
 namespace Combinatorial_Algorithms.Graph_Structures
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A concrete implementation of IGraph. </summary>
+    ///
+    /// <remarks>   Note that the generic parameters here represent the types of tags on vertices/edges
+    ///             respectively whereas the same names in IGraph represent the actual types of
+    ///             vertices/edges.  TTV/TTE stands for Type of Tagged Vertex/Edge
+    ///             Darrell Plank, 5/6/2023. </remarks>
+    ///
+    /// <typeparam name="TTV">   Type of the tagged vertex. </typeparam>
+    /// <typeparam name="TTE">   Type of the tagged edge. </typeparam>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public class Graph<TV, TE> : IGraph<ITaggedVertex<TV>, ITaggedEdge<TE>>
+    public class Graph<TTV, TTE> : IGraph<ITaggedVertex<TTV>, ITaggedEdge<TTE>>
     {
         #region Private variables
         // Keys are vertex IDs, values are the vertices themselves
-        private readonly Dictionary<int, Vertex<TV, TE>> _mapIdToVtx = new();
+        private readonly Dictionary<int, Vertex<TTV, TTE>> _mapIdToVtx = new();
         internal const int VidIllegal = -1;
         internal int _vidNext = 0;
         #endregion
@@ -15,11 +26,11 @@ namespace Combinatorial_Algorithms.Graph_Structures
         #region Properties
         public int VertexCount => _mapIdToVtx.Count;
 
-        public IEnumerable<ITaggedVertex<TV>> Vertices => _mapIdToVtx.Values;
+        public IEnumerable<ITaggedVertex<TTV>> Vertices => _mapIdToVtx.Values;
         #endregion
 
         #region Accessors
-        internal Vertex<TV, TE>? VertexFromId(int id)
+        internal Vertex<TTV, TTE>? VertexFromId(int id)
         {
             if (!_mapIdToVtx.ContainsKey(id))
             {
@@ -29,7 +40,7 @@ namespace Combinatorial_Algorithms.Graph_Structures
             return _mapIdToVtx[id];
         }
 
-        public TV? GetVertexAttr(int id)
+        public TTV? GetVertexAttr(int id)
         {
             var v = VertexFromId(id);
             return v == null ? default : v.Attr;
@@ -49,18 +60,18 @@ namespace Combinatorial_Algorithms.Graph_Structures
         #endregion
 
         #region Insertion/Deletion
-        public Vertex<TV, TE> InsertVertex(string? label = null, TV? attr = default)
+        public Vertex<TTV, TTE> InsertVertex(string? label = null, TTV? attr = default)
         {
             // Every vertex is assigned a numeric ID which it maintains through it's life.  This makes it easier
             // to search for and identify individual vertices.  That id is assigned here.
 
-            var vtx = new Vertex<TV, TE> { ID = _vidNext++, Attr = attr, Label = label};
+            var vtx = new Vertex<TTV, TTE> { ID = _vidNext++, Attr = attr, Label = label};
             _mapIdToVtx.Add(vtx.ID, vtx);
             return vtx;
         }
 
         // ReSharper disable once UnusedMethodReturnValue.Global
-        public int InsertVertices(int cvtx, string? label = null, TV? vattr = default)
+        public int InsertVertices(int cvtx, string? label = null, TTV? vattr = default)
         {
             var vid = InsertVertex(label == null ? null : $"{label}0", vattr).ID;
 
@@ -72,26 +83,26 @@ namespace Combinatorial_Algorithms.Graph_Structures
             return vid;
         }
 
-        public void AddDoubleEdge(Vertex<TV, TE> v1, Vertex<TV, TE> v2, TE? attr = default)
+        public void AddDoubleEdge(Vertex<TTV, TTE> v1, Vertex<TTV, TTE> v2, TTE? attr = default)
         {
             AddEdge(v1, v2, attr);
             AddEdge(v2, v1, attr);
         }
 
-        public void AddEdge(Vertex<TV, TE> vFrom, Vertex<TV, TE> vTo, TE? attr = default)
+        public void AddEdge(Vertex<TTV, TTE> vFrom, Vertex<TTV, TTE> vTo, TTE? attr = default)
         {
             AddEdge(vFrom.ID, vTo.ID, attr);
         }
 
-        public void AddDoubleEdge(int v1, int v2, TE? attr = default)
+        public void AddDoubleEdge(int v1, int v2, TTE? attr = default)
         {
             AddEdge(v1, v2, attr);
             AddEdge(v2, v1, attr);
         }
 
-        public void AddEdge(int vidFrom, int vidTo, TE? attr = default)
+        public void AddEdge(int vidFrom, int vidTo, TTE? attr = default)
         {
-            var edge = new Edge<TV, TE>(vidFrom, vidTo, this);
+            var edge = new Edge<TTV, TTE>(vidFrom, vidTo, this);
             var vtxFrom = VertexFromId(vidFrom);
             var vtxTo = VertexFromId(vidTo);
             edge.Attr = attr;
@@ -121,7 +132,7 @@ namespace Combinatorial_Algorithms.Graph_Structures
             }
 
             Debug.Assert(vtx != null, nameof(vtx) + " != null");
-            var arend = new Edge<TE, TV>[vtx.EdgesFrom.Count + vtx.EdgesTo.Count];
+            var arend = new Edge<TTE, TTV>[vtx.EdgesFrom.Count + vtx.EdgesTo.Count];
             vtx.EdgesFrom.CopyTo(arend, 0);
             vtx.EdgesTo.CopyTo(arend, vtx.EdgesFrom.Count);
 

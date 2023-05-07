@@ -112,8 +112,7 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
 
             public int CompareTo(object? obj)
             {
-                var proxyOther = obj as VertexProxy;
-                if (proxyOther == null)
+                if (obj is not VertexProxy proxyOther)
                 {
                     throw new ArgumentException("obj not VertexProxy in CompareTo");
                 }
