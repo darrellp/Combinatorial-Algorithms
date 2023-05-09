@@ -9,17 +9,17 @@
         double Distance { get; }
     }
 
-    public struct DistanceStruct : IDistance
+    public struct DstStr : IDistance
     {
         public double Distance { get; }
 
-        public DistanceStruct(double dist)
+        public DstStr(double dist)
         {
             Distance = dist;
         }
 
-        public static implicit operator double(DistanceStruct d) => d.Distance;
-        public static implicit operator DistanceStruct(double distance) => new DistanceStruct(distance);
+        public static implicit operator double(DstStr d) => d.Distance;
+        public static implicit operator DstStr(double distance) => new DstStr(distance);
     }
 
 
