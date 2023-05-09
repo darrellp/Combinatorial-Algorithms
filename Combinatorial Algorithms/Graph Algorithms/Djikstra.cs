@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
-using Combinatorial_Algorithms.Graph_Structures;
 using Combinatorial_Algorithms.PriorityQueue;
-using TV = Combinatorial_Algorithms.Graph_Structures.ITaggedVertex<object>;
-using TE = Combinatorial_Algorithms.Graph_Structures.ITaggedEdge<Combinatorial_Algorithms.Graph_Structures.IDistance>;
+using TV = Combinatorial_Algorithms.Graph_Algorithms.ITaggedVertex<object>;
+using TE = Combinatorial_Algorithms.Graph_Algorithms.ITaggedEdge<Combinatorial_Algorithms.Graph_Algorithms.IDistance>;
 
 namespace Combinatorial_Algorithms.Graph_Algorithms
 {
@@ -13,7 +12,11 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Searches for the shortest path. </summary>
         ///
-        /// <remarks>   Darrell Plank, 5/6/2023. </remarks>
+        /// <remarks>   Note that the tagged edge has an interface (IDistance) as it's tag value.  This
+        ///             complicates things a bit in usage but allows us to have tags which inherit from
+        ///             multiple interfaces and therefore can participate in different algorithms with
+        ///             different requirements.
+        ///             Darrell Plank, 5/6/2023. </remarks>
         ///
         /// <param name="graph">    The graph. </param>
         /// <param name="vtxStart"> Starting vertex. </param>
@@ -61,7 +64,7 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
                 proxyCur.IsFinal = true;
                 var distCur = proxyCur.Distance;
                 var vtxCur = proxyCur.Vertex;
-                foreach (var edgeCur in vtxCur.EdgesFrom.Select(edge => edge as ITaggedEdge<IDistance>))
+                foreach (var edgeCur in vtxCur.EdgesFrom.ConvertAll(edge => (ITaggedEdge<IDistance>)edge))
                 {
                     Debug.Assert(edgeCur != null);
                     var vtx = edgeCur.EndVertex;
@@ -71,7 +74,8 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
                         // We've already figured shortest distance to this vertex
                         continue;
                     }
-                    var distTo = edgeCur.Tag.Distance;
+
+                    var distTo = edgeCur.Tag!.Distance;
                     if (distCur + distTo < proxy.Distance)
                     {
                         pq.Delete(proxy);
@@ -94,6 +98,16 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
 
             return ret;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Proxy for vertex in the priority queue. </summary>
+        ///
+        /// <remarks>   We use a proxy to hold our distances and be sorted so we don't have to place
+        ///             those requirements on vertices coming into FindShortestPath. The proxy also takes
+        ///             on the duties of the IPriorityQueueElement. Every vertex will have
+        ///             a 1-1 match with a proxy which is mapped in FindShortestPath by MapTnProxy.
+        ///             Darrell Plank, 5/8/2023. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         internal class VertexProxy : IPriorityQueueElement
         {

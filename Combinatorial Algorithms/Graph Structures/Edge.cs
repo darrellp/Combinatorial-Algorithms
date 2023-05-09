@@ -1,4 +1,6 @@
-﻿namespace Combinatorial_Algorithms.Graph_Structures
+﻿using Combinatorial_Algorithms.Graph_Algorithms;
+
+namespace Combinatorial_Algorithms.Graph_Structures
 {
 
     public class Edge<TV, TE> : ITaggedEdge<TE>

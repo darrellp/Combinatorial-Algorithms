@@ -1,4 +1,4 @@
-﻿namespace Combinatorial_Algorithms.Graph_Structures
+﻿namespace Combinatorial_Algorithms.Graph_Algorithms
 {
     public interface ITagged<T>
     {
