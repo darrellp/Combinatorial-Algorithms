@@ -8,7 +8,7 @@ namespace Combinatorial_Algorithms.Graph_Structures
         public TV? Attr;
 
         // Key is named id of "to" vertex
-        public readonly SortedList<int, Edge<TV, TE>> IdDestToEdge = new();
+        public readonly Dictionary<int, Edge<TV, TE>> IdDestToEdge = new();
         public int ID = Graph<TV, TE>.VidIllegal;
         public string? Label { get; set; } = null;
 

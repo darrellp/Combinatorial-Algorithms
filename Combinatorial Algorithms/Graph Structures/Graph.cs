@@ -113,7 +113,7 @@ namespace Combinatorial_Algorithms.Graph_Structures
                     throw new InvalidDataException();
                 }
 
-                vtxFrom.IdDestToEdge.Add(vidTo, edge);
+                vtxFrom.IdDestToEdge[vidTo] = edge;
                 vtxFrom.EdgesFrom.Add(edge);
                 vtxTo.EdgesTo.Add(edge);
             }

@@ -2,7 +2,7 @@
 using Combinatorial_Algorithms.Graph_Structures;
 using Combinatorial_Algorithms.PriorityQueue;
 using TV = Combinatorial_Algorithms.Graph_Structures.ITaggedVertex<object>;
-using TE = Combinatorial_Algorithms.Graph_Structures.ITaggedEdge<double>;
+using TE = Combinatorial_Algorithms.Graph_Structures.ITaggedEdge<Combinatorial_Algorithms.Graph_Structures.IDistance>;
 
 namespace Combinatorial_Algorithms.Graph_Algorithms
 {
@@ -23,7 +23,7 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static List<TV>? FindShortestPath(
-            IGraph<TV,  TE> graph, 
+            IGraph<TV, TE> graph, 
             TV vtxStart, 
             TV vtxEnd)
         {
@@ -61,7 +61,7 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
                 proxyCur.IsFinal = true;
                 var distCur = proxyCur.Distance;
                 var vtxCur = proxyCur.Vertex;
-                foreach (var edgeCur in vtxCur.EdgesFrom.Select(edge => edge as ITaggedEdge<double>))
+                foreach (var edgeCur in vtxCur.EdgesFrom.Select(edge => edge as ITaggedEdge<IDistance>))
                 {
                     Debug.Assert(edgeCur != null);
                     var vtx = edgeCur.EndVertex;
@@ -71,7 +71,7 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
                         // We've already figured shortest distance to this vertex
                         continue;
                     }
-                    var distTo = edgeCur.Tag;
+                    var distTo = edgeCur.Tag.Distance;
                     if (distCur + distTo < proxy.Distance)
                     {
                         pq.Delete(proxy);
