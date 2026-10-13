@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Combinatorial_Algorithms.PriorityQueue;
-using TV = Combinatorial_Algorithms.Graph_Algorithms.ITaggedVertex<object>;
 using TE = Combinatorial_Algorithms.Graph_Algorithms.ITaggedEdge<Combinatorial_Algorithms.Graph_Algorithms.IDistance>;
+using TV = Combinatorial_Algorithms.Graph_Algorithms.ITaggedVertex<object>;
 
 namespace Combinatorial_Algorithms.Graph_Algorithms
 {

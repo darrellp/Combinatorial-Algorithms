@@ -114,6 +114,10 @@ namespace Combinatorial_Algorithms.Graph_Structures
                     throw new InvalidDataException();
                 }
 
+                if (vtxFrom.IdDestToEdge.ContainsKey(vidTo))
+                {
+                    VfException.Error("Trying to insert duplicate edge");
+                }
                 vtxFrom.IdDestToEdge[vidTo] = edge;
                 vtxFrom.EdgesFrom.Add(edge);
                 vtxTo.EdgesTo.Add(edge);
