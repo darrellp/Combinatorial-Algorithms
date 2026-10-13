@@ -16,11 +16,15 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
         ///             complicates things a bit in usage but allows us to have tags which inherit from
         ///             multiple interfaces and therefore can participate in different algorithms with
         ///             different requirements.
+        ///             
+        /// NOTE: This is largely superseded by ShortestPath which uses OR-Tools to find the shortest path.  
+        ///     This implementation is left here for reference and for use in cases where OR-Tools isn't available.
         ///             Darrell Plank, 5/6/2023. </remarks>
         ///
         /// <param name="graph">    The graph. </param>
         /// <param name="vtxStart"> Starting vertex. </param>
         /// <param name="vtxEnd">   Ending vertex. </param>
+        ///
         ///
         /// <returns>   The found shortest path or null if vtxEnd isn't reachable from vtxStart. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
