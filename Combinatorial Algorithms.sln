@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33103.184
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12224.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combinatorial Algorithms", "Combinatorial Algorithms\Combinatorial Algorithms.csproj", "{519CC7ED-1E20-42EC-94D4-4C57007A83D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CATests", "CATests\CATests.csproj", "{342A2508-F0EC-4D4A-9509-339969A42AF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Priority Queue", "..\PriorityQueue\Priority Queue\Priority Queue.csproj", "{8A4C717F-1160-7525-83EB-7C550F0202C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{342A2508-F0EC-4D4A-9509-339969A42AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{342A2508-F0EC-4D4A-9509-339969A42AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{342A2508-F0EC-4D4A-9509-339969A42AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A4C717F-1160-7525-83EB-7C550F0202C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A4C717F-1160-7525-83EB-7C550F0202C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A4C717F-1160-7525-83EB-7C550F0202C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A4C717F-1160-7525-83EB-7C550F0202C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
