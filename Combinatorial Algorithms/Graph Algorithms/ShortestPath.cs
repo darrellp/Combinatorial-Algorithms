@@ -2,7 +2,7 @@ using Google.OrTools.LinearSolver;
 
 namespace Combinatorial_Algorithms.Graph_Algorithms
 {
-    public static class OrToolsShortestPath
+    public static class ShortestPath
     {
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Searches for the shortest path using OR-Tools' linear solver. </summary>

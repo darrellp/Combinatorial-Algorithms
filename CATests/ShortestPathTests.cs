@@ -4,10 +4,10 @@ using Combinatorial_Algorithms.Graph_Structures;
 namespace CATests
 {
     [TestClass]
-    public class OrToolsShortestPathTests
+    public class ShortestPathTests
     {
         [TestMethod]
-        public void TestOrToolsShortestPath()
+        public void TestShortestPath()
         {
             // Using the same graph as DjikstraTests, seen in this video:
             // https://www.youtube.com/watch?v=GazC3A4OQTE&ab_channel=Computerphile
@@ -45,7 +45,7 @@ namespace CATests
             gr.AddDoubleEdge(j, l, new DstStr(4));
             gr.AddDoubleEdge(l, c, new DstStr(2));
             gr.AddDoubleEdge(c, s, new DstStr(3));
-            var path = OrToolsShortestPath.FindShortestPath(gr, s, e);
+            var path = ShortestPath.FindShortestPath(gr, s, e);
             Assert.IsNotNull(path);
             Assert.AreEqual(5, path.Count);
             Assert.AreEqual(((Vertex<object, IDistance>)path[0]).Label, "S");
@@ -65,7 +65,7 @@ namespace CATests
             gr.AddEdge(s, t, new DstStr(1));
 
             var isolated = gr.Vertices.First(v => ((Vertex<object, IDistance>)v).Label == "Isolated");
-            var path = OrToolsShortestPath.FindShortestPath(gr, s, isolated);
+            var path = ShortestPath.FindShortestPath(gr, s, isolated);
             Assert.IsNull(path);
         }
 
@@ -74,7 +74,7 @@ namespace CATests
         {
             var gr = new Graph<object, IDistance>();
             var s = gr.InsertVertex("S");
-            var path = OrToolsShortestPath.FindShortestPath(gr, s, s);
+            var path = ShortestPath.FindShortestPath(gr, s, s);
             Assert.IsNotNull(path);
             Assert.AreEqual(1, path.Count);
         }
