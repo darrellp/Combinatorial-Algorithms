@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ChallengeCore.Challenges
+namespace Combinatorial_Algorithms.Other_Algorihms
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>	Interface IState. </summary>

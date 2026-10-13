@@ -3,7 +3,7 @@
 using System.Diagnostics;
 #endif
 
-namespace ChallengeCore.Challenges
+namespace Combinatorial_Algorithms.Other_Algorihms
 {
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Class AStarState. </summary>
@@ -95,7 +95,7 @@ namespace ChallengeCore.Challenges
 			// AStarNode in the Fibonacci heap and since we are letting Pqt
 			// handle the messy details, we actually are looking for the
 			// Pqt<AStarNode<T>> which is in the heap...
-			var dictOpen = new Dictionary<T, AStarNode<T>>();
+			var dictOpen = new Dictionary<T, FibonacciWrapper<AStarNode<T>>>();
 
 			// While there are elements in Open
 			while (_openSet.Count != 0)
@@ -145,7 +145,7 @@ namespace ChallengeCore.Challenges
 						var nodeCandidate = new AStarNode<T>(neighbor, _targets, curOpenNode);
 
 						// Is our proposed replacement a better solution?
-						if (((AStarNode<T>)nodeInOpen).CompareTo(nodeCandidate) > 0)
+						if (nodeInOpen.Value.CompareTo(nodeCandidate) > 0)
 						{
 							// Then replace old neighbor node with our replacement
 							_openSet.DecreaseKey(nodeInOpen, nodeCandidate);
