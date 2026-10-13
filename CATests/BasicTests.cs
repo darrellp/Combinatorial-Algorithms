@@ -30,7 +30,7 @@ namespace CATests
             Assert.AreEqual(3, gr.InsertVertex(null, 20).ID);
 
             // Trigger the exception - no edge from 1 to 0...
-            Assert.ThrowsException<VfException>(() => gr.DeleteEdge(1, 0));
+            Assert.Throws<VfException>(() => gr.DeleteEdge(1, 0));
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace CATests
             Assert.AreEqual(idTo, edge.IDTo);
 
             // Try inserting the same edge twice to trigger exception...
-            Assert.ThrowsException<VfException>(() => gr.AddEdge(0, 1, 200));
+            Assert.Throws<VfException>(() => gr.AddEdge(0, 1, 200));
         }
 
         [TestMethod]
