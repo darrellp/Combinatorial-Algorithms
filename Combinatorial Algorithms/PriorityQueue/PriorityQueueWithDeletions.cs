@@ -14,7 +14,7 @@
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // ReSharper disable once InconsistentNaming
-    public class PriorityQueueWithDeletions<TPQ> : PriorityQueue<TPQ> where TPQ : IPriorityQueueElement
+    public class PriorityQueueWithDeletions<TPQ> : PriorityQueue<TPQ> where TPQ : IDeletable
 	{
 		#region Public overrides
 

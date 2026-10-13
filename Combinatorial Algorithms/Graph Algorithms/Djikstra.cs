@@ -109,7 +109,7 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
         ///             Darrell Plank, 5/8/2023. </remarks>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        internal class VertexProxy : IPriorityQueueElement
+        internal class VertexProxy : IDeletable
         {
             internal TV Vertex { get; }
             internal double Distance { get; set; }

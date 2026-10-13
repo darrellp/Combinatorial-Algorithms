@@ -9,7 +9,7 @@
 	/// <remarks>	Darrellp, 2/17/2011. </remarks>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public interface IPriorityQueueElement : IComparable
+	public interface IDeletable : IComparable
 	{
 		///<summary>
 		/// This is called when the priority queue needs to store it's index

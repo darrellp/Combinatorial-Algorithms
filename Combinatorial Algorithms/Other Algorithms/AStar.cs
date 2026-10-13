@@ -1,4 +1,4 @@
-﻿using Priority_Queue;
+﻿using Combinatorial_Algorithms.PriorityQueue;
 #if PRINTASTAR
 using System.Diagnostics;
 #endif
@@ -254,3 +254,4 @@ namespace ChallengeCore.Challenges
 		}
     }
 }
+
