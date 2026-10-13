@@ -18,6 +18,8 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
 
     public static class TravellingSalesman
     {
+        private const int GuidedSearchThreshold = 30;
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Solves the travelling salesman problem using OR-Tools routing. </summary>
         ///
@@ -60,8 +62,14 @@ namespace Combinatorial_Algorithms.Graph_Algorithms
 
             var parameters = operations_research_constraint_solver.DefaultRoutingSearchParameters();
             parameters.FirstSolutionStrategy = FirstSolutionStrategy.Types.Value.PathCheapestArc;
-            parameters.LocalSearchMetaheuristic = LocalSearchMetaheuristic.Types.Value.GuidedLocalSearch;
-            parameters.TimeLimit = new Duration { Seconds = timeLimitSeconds };
+
+            // Guided local search never terminates early - it runs until the time limit.  For small graphs
+            // the default search stops at a local optimum in milliseconds so we only use it for larger ones.
+            if (n >= GuidedSearchThreshold)
+            {
+                parameters.LocalSearchMetaheuristic = LocalSearchMetaheuristic.Types.Value.GuidedLocalSearch;
+                parameters.TimeLimit = new Duration { Seconds = timeLimitSeconds };
+            }
 
             var solution = routing.SolveWithParameters(parameters);
             if (solution == null)
