@@ -61,10 +61,9 @@ namespace CATests
             var gr = new Graph<object, IDistance>();
             var s = gr.InsertVertex("S");
             var t = gr.InsertVertex("T");
-            gr.InsertVertex("Isolated");
+            var isolated = gr.InsertVertex("Isolated");
             gr.AddEdge(s, t, new DstStr(1));
 
-            var isolated = gr.Vertices.First(v => ((Vertex<object, IDistance>)v).Label == "Isolated");
             var path = ShortestPath.FindShortestPath(gr, s, isolated);
             Assert.IsNull(path);
         }
