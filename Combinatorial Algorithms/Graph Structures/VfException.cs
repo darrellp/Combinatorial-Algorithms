@@ -1,5 +1,4 @@
-﻿using System;
-namespace Combinatorial_Algorithms.Graph_Structures
+﻿namespace Combinatorial_Algorithms.Graph_Structures
 {
     public class VfException : Exception
     {

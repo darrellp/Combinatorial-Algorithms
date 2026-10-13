@@ -1,6 +1,4 @@
-using System.Linq;
 using Combinatorial_Algorithms.Graph_Structures;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CATests
 {

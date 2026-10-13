@@ -1,9 +1,5 @@
-﻿using System.Diagnostics;
-using System.Linq;
-using Combinatorial_Algorithms.Graph_Algorithms;
+﻿using Combinatorial_Algorithms.Graph_Algorithms;
 using Combinatorial_Algorithms.Graph_Structures;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CATests
 {
