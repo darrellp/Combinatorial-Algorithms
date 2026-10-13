@@ -19,8 +19,8 @@ namespace Combinatorial_Algorithms.Other_Algorihms
     /// to make do with this very simple IState interface.
     /// 
     /// >>>> IMPORTANT!!!!
-    /// If your state derives from AStarState then it will use IsEqual for hashsets.  If not,
-    /// YOU NEED TO IMPLEMENT GetHashCode() and Equals() or you will have serious problems
+    /// If your state derives from AStarState then it will use IsEqual for hashsets.  If this isn't
+    /// acceptable then YOU NEED TO IMPLEMENT GetHashCode() and Equals() or you will have serious problems
     /// (i.e., infinite loops).
     /// </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////

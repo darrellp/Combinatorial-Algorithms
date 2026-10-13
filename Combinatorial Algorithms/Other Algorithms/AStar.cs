@@ -5,19 +5,27 @@ using System.Diagnostics;
 
 namespace Combinatorial_Algorithms.Other_Algorihms
 {
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	Class AStarState. </summary>
-	///
-	/// <remarks>
-	/// The simplest possible implementation of IState.  Users of A* should inherit from this class.
-	/// They will be required to implement Successors, IsEqual and GetHashCode.  If the path length
-	/// is just "number of steps" then the default SuccessorDistance() can be used.  If there is no
-	/// good distance estimator available then the default of 0 can be used which is equivalent to
-	/// using Djikstra's algorithm.
-	/// </remarks>
-	////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>	Class AStarState. </summary>
+    ///
+    /// <remarks>
+    /// The simplest possible implementation of IState.  Users of A* should inherit from this class.
+    /// They will be required to implement Successors, IsEqual and GetHashCode.  If the path length
+    /// is just "number of steps" then the default SuccessorDistance() can be used.  If there is no
+    /// good distance estimator available then the default of 0 can be used which is equivalent to
+    /// using Djikstra's algorithm.
+    /// 
+    /// NOTE: AStar does not work directly on a Graph object.  It works on States which produce other states.
+    /// This allows for heuristics to guide the search rather than just blindly wandering through a graph.
+	/// It also allows for "infinite" graphs with a small footprint since the graph is never actually constructed.
+	/// The user is responsible for implementing the IState which causes all this to work.
+	/// 
+	/// I could have created a GraphState which would have been a state that was based on a graph but I didn't 
+	/// see the point since it we will handle this with OR-Tools.
+    /// </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public abstract class AStarState : IState
+    public abstract class AStarState : IState
 	{
 		public abstract IEnumerable<IState> Successors();
 		public abstract bool IsEqual(IState istate);
