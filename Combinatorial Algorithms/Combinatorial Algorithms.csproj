@@ -5,6 +5,10 @@
     <RootNamespace>Combinatorial_Algorithms</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>CombinatorialAlgorithms</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Darrell Plank</Authors>
+    <Description>Combinatorial Algorithms library</Description>
   </PropertyGroup>
 
   <ItemGroup>

@@ -137,7 +137,7 @@ namespace Combinatorial_Algorithms.Graph_Structures
             }
 
             Debug.Assert(vtx != null, nameof(vtx) + " != null");
-            var arend = new Edge<TTE, TTV>[vtx.EdgesFrom.Count + vtx.EdgesTo.Count];
+            var arend = new Edge<TTV, TTE>[vtx.EdgesFrom.Count + vtx.EdgesTo.Count];
             vtx.EdgesFrom.CopyTo(arend, 0);
             vtx.EdgesTo.CopyTo(arend, vtx.EdgesFrom.Count);
 

@@ -13,7 +13,7 @@ namespace Combinatorial_Algorithms.Graph_Structures
 
         public Edge<TV, TE>? FindOutEdge(int vidTo)
         {
-            return IdDestToEdge[vidTo];
+            return IdDestToEdge.TryGetValue(vidTo, out var edge) ? edge : null;
         }
 
         public List<IEdge> EdgesFrom { get; } = new();
